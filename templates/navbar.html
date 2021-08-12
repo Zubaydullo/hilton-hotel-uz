@@ -1,0 +1,131 @@
+{% load static %}
+{% load i18n %}
+{% load socialaccount %}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Hilton</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">{% trans 'Home' %}</a></li>
+                <li class="nav-item"><a href="{% url 'rooms' %}" class="nav-link">{% trans 'Rooms' %}</a></li>
+                <li class="nav-item"><a href="{% url 'restaurant' %}" class="nav-link">{% trans 'Restaurant' %}</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">{% trans 'About' %}</a></li>
+                <li class="nav-item"><a href="{% url 'blog-list' %}" class="nav-link">{% trans 'Blog' %}</a></li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">{% trans 'Contact' %}</a></li>
+
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <div class="nav-item dropdown">
+                    <a class="dropdown-toggle text-light nav-link" type="button" id="dropdownMenuButton1"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{% static 'images/user.png' %}" alt="profile" width="25px">
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                        <li><a href="{% url 'hotel_manager:dashboard' %}" class="text-dark"><i class="fas fa-user"></i>
+                            {% trans 'Profile' %} </a></li>
+                        <li><a href="{% url 'logout' %}" class="text-dark"><i class="fas fa-sign-out-alt"></i>
+                            {% trans 'Log out' %}</a></li>
+                    </ul>
+                </div>
+
+
+                {% else %}
+                <div class="nav-item dropdown">
+                    <a class="dropdown-toggle text-light nav-link" type="button" id="dropdownMenuButton1"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{request.user.guest.profile_pic.url}}" alt="profile" width="30px" height="30px"
+                             style="border-radius: 50%;">
+                    </a>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                        <li><a href="{% url 'user_profile' %}" class="text-dark"><i class="fas fa-user"></i>
+                            {% trans 'My Bookings' %}</a></li>
+                        <li><a href="{% url 'profile_settings' %}" class="text-dark"><i class="fas fa-cog"></i>
+                            {% trans 'Profile Settings' %}</a></li>
+                        <li><a href="{% url 'logout' %}" class="text-dark"><i class="fas fa-sign-out-alt"></i>
+                            {% trans 'Log out' %}</a></li>
+                    </ul>
+                </div>
+
+                {% endif %}
+                {% else %}
+                <li class="nav-item"><a href="#login" class="trigger-btn nav-link" data-toggle="modal">
+                    {% trans 'Log in' %}</a></li>
+                {% endif %}
+                <li class="nav-item my-auto nav-li">
+
+
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <button type="submit" id="btn-lang" name="language" value="{{ language.code }}"
+                                class="nav-lang fa-lg"
+                                style="border: none;outline: none;background-color: rgba(250, 235, 215, 0); display:inline;">
+                            {% if language.code == 'en' %}
+                            <a href="{{ language.code }}"><img src="{% static 'images/usa.png' %}" alt="" width="30"></a>
+                            {% else %}
+                            <a href="{{ language.code }}"><img src="{% static 'images/uzb.png' %}" alt="" width="30"></a>
+                            {% endif %}
+                        </button>
+                        {% if language.code == 'en' %} | {% endif %}
+                        {% endfor %}
+                    </form>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!-- END nav -->
+
+
+<!-- LOGIN MODAL  -->
+<form action="" method="post">
+    {% csrf_token %}
+    <div id="login" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content ">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100">Login In</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username"
+                                   required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Password"
+                                   required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">{% trans 'Login' %}</button>
+                        </div>
+                        <div class="or-seperator"><i>{% trans 'or' %}</i></div>
+                        <p class="text-center">{% trans 'Login with your google account' %}</p>
+                        <div class="text-center social-btn">
+                            <a href="{% provider_login_url 'google' %}" class="btn btn-primary"><i
+                                    class="fa fa-google"></i>Google</a>
+                        </div>
+                    </form>
+                </div>
+                <p class="text-center text-muted small">{% trans "Don't have an account?" %} <a
+                        href="{% url 'user_signup' %}">{% trans 'Sign up here!' %}</a></p>
+
+            </div>
+        </div>
+    </div>
+</form>
+<!-- end Login Modal  -->

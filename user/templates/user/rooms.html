@@ -1,0 +1,89 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+      <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+        <div class="text">
+          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>{% trans 'Rooms' %}</span>
+          </p>
+          <h1 class="mb-4 bread">{% block title %}{% trans 'Rooms' %}{% endblock %}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="row">
+          {% if rooms %}
+          {% for room in rooms %}
+          <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+            <div class="room">
+              <a href="{% url 'room-single' room.id %}" class="img d-flex justify-content-center align-items-center"
+                style="background-image: url({{room.image_1.url}});">
+                <div class="icon d-flex justify-content-center align-items-center">
+                  <span class="icon-search2"></span>
+                </div>
+              </a>
+              <div class="text p-3 text-center">
+                <h3 class="mb-3"><a href="{% url 'room-single' room.id %}">{{room.category.name}} {% trans 'Room' %}</a></h3>
+                <p><span class="price mr-2">${{room.price}}</span> <span class="per">{% trans 'per night' %}</span></p>
+                <ul class="list">
+                  <li>{% trans 'Room Number' %}: {{room.room_number}}</li>
+                  <li><span>Max:</span> {{room.adults}}
+                    {% if room.people <= 1 %} person {% else %} people {% endif %}</li>
+                  <li><span>{% trans 'Size' %}:</span> {{room.room_size}} m2</li>
+                  <li><span>{% trans 'View' %}:</span> {{room.view.description}} {% trans 'View' %}</li>
+                  <li><span>Bed:</span> {{room.bed}}</li>
+                </ul>
+                <hr>
+                <p class="pt-1"><a href="{% url 'booking' room.id %}" class="btn-custom">{% trans 'Book Now' %} <span
+                      class="icon-long-arrow-right"></span></a></p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-lg-3 sidebar">
+        <div class="sidebar-wrap bg-light ftco-animate">
+          <h3 class="heading mb-4">{% trans 'Advanced Search' %}</h3>
+
+          <form action="#" method="GET" >
+            {% csrf_token %}
+           <div class="form-group">
+            {{room_filter.form|crispy}}
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+            </div>
+        </div>
+        </form>
+
+        <div class="sidebar-wrap bg-light ftco-animate">
+          <h3>{% trans 'Main amenities' %}</h3>
+          <ul>
+            {% for facility in facilities %}
+            <li style="list-style-type: none;"><i class="fas fa-check"></i> {{facility.facility_name}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+<div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+            <div class="text">
+              <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Profile</span></p>
+              <h1 class="mb-4 bread">{{request.user}}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-lg-4">
+        <div class="card card-body">
+            <a href="{% url 'user_profile' %}" class="btn btn-outline-danger"> &#8592; {% trans 'Back to Profile' %}</a>
+            <hr>
+            <h3 style="text-align: center;">{% trans 'Account Settings' %}</h3>
+            <hr>
+            <img src="{{request.user.guest.profile_pic.url}}" alt="" class="profile-pic">
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card card-body">
+           <form method="POST" action="" enctype="multipart/form-data">
+               {% csrf_token %}
+               {{profile_form|crispy}}
+                <input type="submit" class="btn btn-primary" name="Update Information">
+           </form>
+        </div>
+    </div>
+</div>
+  
+
+<hr>
+<p>My Bookings list:</p>
+{% endblock %}

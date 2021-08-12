@@ -1,0 +1,85 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+
+<title>{% block title %}{% trans 'Contact Us' %}{% endblock %}</title>
+
+
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+            <div class="text">
+              <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">{% trans 'Home' %}</a></span> <span>{% trans 'Contact' %}</span></p>
+              <h1 class="mb-4 bread">{% trans 'Contact Us' %}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="ftco-section contact-section bg-light">
+    <div class="container">
+      <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4">
+          <h2 class="h3">{% trans 'Contact Information' %}</h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Address:</span> 2 Islam Karimov Street, block 5
+                Tashkent, 100027, Uzbekistan</p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>{% trans 'Phone' %}:</span> <a href="tel://1234567920">+998 71 210 88 88
+              </a></p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Email:</span> <a href="mailto:hilton@gmail.com">hilton@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="info bg-white p-4">
+              <p><span>Website</span> <a href="https://www.hilton.com/en/?WT.srch=1&WT.mc_id=zIMDPDA0EMEA1MB2PSH3PPC_Google_search4cid123373953_aid7683413433_me_kkwd-428581415Brand_TopLevel6MULTIBR7en&utm_source=Google&utm_medium=ppc&utm_campaign=paidsearch&campaignid=123373953&adgroupid=7683413433&targetid=kwd-42858141&gclid=CjwKCAjwo4mIBhBsEiwAKgzXOCEogiLLomktydRY6KF0rk0xIo2WFiy1waqt-KykcD3t4mrXH3XPshoCk8oQAvD_BwE&gclsrc=aw.ds">hilton.com</a></p>
+            </div>
+        </div>
+      </div>
+      <div class="row block-9">
+        <div class="col-md-6 order-md-last d-flex">
+          <form action="#" method="post" class="bg-white p-5 contact-form">
+            {% csrf_token %}
+<!--            {{form.as_p}}-->
+            <div class="form-group">
+              <input name="name" type="hidden" class="form-control" value="{{request.user.username}}">
+            </div>
+            <div class="form-group">
+              <input name="email" type="text" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+              <input name="subject" type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="form-group">
+              <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+            </div> 
+          </form>
+        
+        </div>
+
+        <div class="col-md-6 d-flex">
+            <div  class="bg-white"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.764491501641!2d69.24670881494771!3d41.31398670850602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b685b689e13%3A0xaf4cdf526e02f5e7!2sHilton%20Tashkent%20City!5e0!3m2!1sen!2s!4v1623768275388!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

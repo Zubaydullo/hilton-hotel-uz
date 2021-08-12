@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-29 18:31+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\blog_post\templates\blog_post\blog_list.html:8
+#, fuzzy
+#| msgid "Blog List"
+msgid "Blogs"
+msgstr "Bloglar Ro'yhati"
+
+#: .\blog_post\templates\blog_post\blog_list.html:16
+#: .\blog_post\templates\blog_post\blog_single.html:12
+#: .\blog_post\templates\blog_post\posts_with_tags.html:10
+msgid "Home"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\blog_list.html:16
+#: .\blog_post\templates\blog_post\blog_list.html:17
+msgid "Blog List"
+msgstr "Bloglar Ro'yhati"
+
+#: .\blog_post\templates\blog_post\blog_list.html:46
+msgid "No posts!"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\blog_single.html:12
+#: .\blog_post\templates\blog_post\blog_single.html:13
+#, fuzzy
+#| msgid "Blog List"
+msgid "Blog Single"
+msgstr "Bloglar Ro'yhati"
+
+#: .\blog_post\templates\blog_post\blog_single.html:62
+msgid "Leave a comment"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\blog_single.html:66
+msgid "Message"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\blog_single.html:85
+msgid "Recent Blogs"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\blog_single.html:102
+msgid "Tag Cloud"
+msgstr ""
+
+#: .\blog_post\templates\blog_post\posts_with_tags.html:11
+msgid "Posts tagged with"
+msgstr ""

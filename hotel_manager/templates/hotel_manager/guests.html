@@ -1,0 +1,57 @@
+{% extends 'hotel_manager/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive table--no-card m-b-30">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                <h3 class="title-5 m-b-35">data table</h3>
+
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>User Image</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Profile Created Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for guest in guests %}
+                                            <tr class="tr-shadow">  
+                                                <td><img src="{{guest.profile_pic.url}}" alt="" width="100" class="rounded-circle"></td>
+                                                <td>{{guest.user}}</td>
+                                                <td>
+                                                    <span class="block-email">{{guest.email}}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="status--process">{{guest.phone}}</span>
+                                                </td>
+                                                <td>{{guest.date_created}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

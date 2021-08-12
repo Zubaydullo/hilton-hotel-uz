@@ -1,0 +1,406 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Hilton {% endblock %}</title>
+
+    <!-- Font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!--	Bootstrap link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}"> -->
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'scroll-style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'styles-signup.css' %}">
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<section class="home-slider owl-carousel" id="about">
+    <div class="slider-item" style="background-image:url({% static '/images/hilton-bg-2.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate text-center">
+                    <div class="text mb-5 pb-3">
+                        <div class="col">
+                            {% for message in messages %}
+                            <p class="alert-success text-dark">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                        <h1 class="mb-3">{% trans 'Welcome To Hilton' %}</h1>
+                        <h2>{% trans 'Hotels' %} &amp; {% trans 'Resorts' %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="slider-item" style="background-image:url(static/images/hilton-bg-3.jpg);"> -->
+    <div class="slider-item" style="background-image:url({% static '/images/hilton-bg-3.jpg' %});">
+
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate text-center">
+                    <div class="text mb-5 pb-3">
+                        <h1 class="mb-3">{% trans 'Enjoy A Luxury Experience' %}</h1>
+                        <h2>{% trans 'Join With Us' %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-item" style="background-image:url({% static '/images/hilton-bg-4.jpg' %});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-12 ftco-animate text-center">
+                    <div class="text mb-5 pb-3">
+                        <h1 class="mb-3">{% trans 'Luxurious Stay' %}</h1>
+                        <h2>{% trans 'Hotels' %} &amp; {% trans 'Resorts' %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<section class="ftco-section ftc-no-pb ftc-no-pt">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center"
+                 style="background-image: url({% static 'images/hilton-bg-1.jpg' %}); border-top-left-radius: 50%;">
+                <a href="{% static 'hotel_description.mp4' %}"
+                   class="icon popup-vimeo d-flex justify-content-center align-items-center">
+                    <span class="icon-play"></span>
+                </a>
+            </div>
+            <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+                <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
+                    <div class="ml-md-0">
+                        <span class="subheading">{% trans 'Welcome to Hilton Hotel' %}</span>
+                        <h2 class="mb-4">{% trans 'Welcome To Our Hotel' %}</h2>
+                    </div>
+                </div>
+                <div class="pb-md-5">
+                    <p>{% trans "In the center of Tashkent City, we're within 10 minutes of Chorsu Bazaar and the
+                        Alisher Navoï Opera. We’re around the corner from two metro stations — part of a line famed for
+                        unique architecture and ornate decor at each stop. Our hotel features an indoor pool, spa, and a
+                        rooftop terrace and Pan Asian restaurant." %}</p>
+                    <ul class="ftco-social d-flex">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.facebook.com/internationalhotel.tashkent"><span
+                                class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="https://www.instagram.com/hiltontashkentcityhotel/"><span
+                                class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section" id="services">
+    <div class="container">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable"
+                style="margin-left: 40%;">
+            {% trans 'View more facilities' %}
+        </button>
+        <div class="row d-flex">
+            {% for amenity in amenities %}
+            <div class="col-lg-3 col-md-4 col-sm-12 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="{{amenity.icon_class}}"></span>
+                        </div>
+                    </div>
+                    <div class="media-body p-2 mt-2">
+                        <h3 class="heading mb-3">{{amenity.heading}}</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--	Rooms Section-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">{% trans 'Hotel Facilities' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                {% for room_facility in room_facilities %}
+                <p><i class="fas fa-check fa-lg"></i> {{room_facility.facility_name}}</p>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End modal  -->
+
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2 class="mb-4">{% trans 'Our Rooms' %}</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-sm col-md-6 col-lg-4 ftco-animate">
+                <div class="room">
+                    <a href="{% url 'rooms' %}" class="img d-flex justify-content-center align-items-center"
+                       style="background-image: url({% static 'images/room-1.jpg' %});">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-search2"></span>
+                        </div>
+                    </a>
+                    <div class="text p-3 text-center">
+                        <h3 class="mb-3"><a href="{% url 'rooms' %}">
+                            {{room.category.name}} {% trans 'Room' %}</a></h3>
+                        <p><span class="price mr-2">${{room.price}}</span> <span class="per">{% trans 'per night' %}</span>
+                        </p>
+                        <hr>
+                        <p class="pt-1"><a href="{% url 'room-single' room.id %}" class="btn-custom">
+                            {% trans 'View Room Details' %} <span class="icon-long-arrow-right"></span></a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<!-- End Room section  -->
+
+<section class="ftco-section ftco-counter img" id="section-counter"
+         style="background-image: url(static/images/bg_1.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="{{happy_guests}}">0</strong>
+                                <span>{% trans 'Happy Guests' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="{{num_rooms}}">0</strong>
+                                <span>{% trans 'Rooms' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="100">0</strong>
+                                <span>{% trans 'Guest Stasfication' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <strong class="number" data-number="100">0</strong>
+                                <span>{% trans 'Daily Hotel Visitors' %} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 ftco-animate">
+                <div class="row ftco-animate">
+                    <div class="col-md-12">
+                        <div class="carousel-testimony owl-carousel ftco-owl">
+                            {% for testimonial in testimonials %}
+                            <div class="item">
+                                <div class="testimony-wrap py-4 pb-5">
+                                    <div class="user-img mb-4" style="background-image: url({{testimonial.image.url}})">
+						<span class="quote d-flex align-items-center justify-content-center">
+						  <i class="icon-quote-left"></i>
+						</span>
+                                    </div>
+                                    <div class="text text-center">
+                                        <p class="mb-4">{{testimonial.comment}}</p>
+                                        <p class="name">{{testimonial.name}}</p>
+                                        <span class="position">{% trans 'Guests' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section" id="blogsection">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2>{% trans 'Recent Blog' %}</h2>
+            </div>
+        </div>
+        <div class="row d-flex">
+            {% if blogs %}
+            {% for blog in blogs %}
+            <div class="col-md-3 d-flex ftco-animate">
+                <div class="blog-entry align-self-stretch">
+                    <img src="{{blog.blog_image.url}}" alt="blog_image" width="100%" height="50%">
+                    </a>
+                    <div class="text mt-3 d-block">
+                        <h3 class="heading mt-3"><a href="{% url 'blog-single' blog.id %}">{{blog.blog_heading}}</a>
+                        </h3>
+                        <div class="meta mb-3">
+                            <div><span>{{blog.date_created}}</span></div>
+                            <div><span>by admin</span></div>
+                            <div><span class="icon-chat"></span>{{blog.comments.all.count}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="text-center">{% trans 'No posts!' %}</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="instagram">
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2><span>Instagram</span></h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            {% for insta in instagram_images %}
+            <div class="col-3 col-md ftco-animate">
+                <a href="{{insta.image.url}}" class="insta-img image-popup">
+                    <img src="{{insta.image.url}}" alt="">
+
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+</body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<!-- <script src="{% static 'js/jquery.timepicker.min.js' %}"></script> -->
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+jQuery(window).load(function() {
+    $('#language').change(function() {
+        window.location.replace("/" + $('#language').val() + "/");
+    });
+});
+ $(".dropdown-menu li a").click(function(){
+
+  $(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
+
+});
+
+
+
+
+
+</script>
+</html>

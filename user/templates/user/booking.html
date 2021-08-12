@@ -1,0 +1,164 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<title>{% block title %} {% trans 'Make Reservation' %} {% endblock %}</title>
+
+
+<!--    Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'BookingForm/css/bootstrap.min.css' %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'BookingForm/css/style.css' %}" />
+
+
+</head>
+
+<body>
+	
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="form-header">
+							<button class="btn btn-primary" name='room_number'>{% trans 'Room Number' %}: {{room.room_number}}</button>
+
+							<h1>{% trans 'Make your reservation' %}</h1>
+						</div>
+						<form action="{% url 'user_profile' %}" method="POST">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" name='checkin' type="date" required>
+										<span class="form-label">Check In</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" name='checkout' type="date" required>
+										<span class="form-label">Check out</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col text-center">
+										{% for message in messages %}
+									<button class="message  btn-block bg-light">{{message}}</button>
+								{% endfor %}
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<select class="form-control" name='room' hidden  required>
+											<option value="" selected hidden> {% trans 'Select your room' %}</option>
+											<option>{{room.category.name}} {% trans 'room' %}</option>
+										</select>
+										
+										<span class="select-arrow"></span>
+										<span class="form-label">Rooms</span>
+
+									</div>
+								</div>
+
+								<input type="hidden" name="room_number" value="{{room.room_number}}">
+								<div class="col-md-6">
+									<div class="form-group">
+										<select class="form-control"  name="adults">
+											<option value="" selected hidden>{% trans 'Num of Adults' %}</option>
+											{% if room.adults <= 1 %}
+												<option>{{room.adults}} </option>
+											{% else %}
+											{% with ''|center:room.adults as range %}
+												{% for _ in range %}
+													<option>{{forloop.counter}}</option>
+												{% endfor %}
+											{% endwith %}
+											{% endif %}
+										</select>
+										<span class="select-arrow"></span>
+										<span class="form-label">Adults</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<select class="form-control" required name='children'>
+											<option value="" selected hidden>{% trans 'Num of Children' %}</option>
+											{% if room.children <= 1 %}
+												<option>{{room.children}} </option>
+											{% else %}
+											{% with ''|center:room.children as range %}
+												{% for _ in range %}
+													<option>{{forloop.counter}}</option>
+												{% endfor %}
+											{% endwith %}
+											{% endif %}
+
+										</select>
+										<span class="select-arrow"></span>
+										<span class="form-label">Children</span>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="email" name='email' placeholder="Enter your Email">
+										<span class="form-label">Email</span>
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="text" name='passport' placeholder="Enter your Passport">
+										<span class="form-label">Passport</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" type="number" name='phone' placeholder="Enter you Phone">
+										<span class="form-label">Phone</span>
+									</div>
+								</div>
+							</div>
+							<input type="hidden" name="next" value="{{ next }}">
+							<input type="hidden" name="price" value="{{ room.category.price }}">
+							<div class="form-btn">
+								<button type="submit" class="submit-btn btn-block text-center" >
+									{% trans 'Book Now' %}
+								</button>
+							
+							</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	
+		
+
+</body>
+<script src="{% static 'BookingForm/js/jquery.min.js' %}"></script>
+</html>

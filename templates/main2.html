@@ -1,0 +1,153 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Font awesome link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!--	Bootstrap link-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+	 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+   <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+   <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+   <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+   
+    
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'home' %}">Hilton</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">{% trans 'Home' %}</a></li>
+	          <li class="nav-item"><a href="{% url 'rooms' %}" class="nav-link">{% trans 'Rooms' %}</a></li>
+	          <li class="nav-item"><a href="{% url 'restaurant' %}" class="nav-link">{% trans 'Restaurant' %}</a></li>
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">{% trans 'About' %}</a></li>
+	          <li class="nav-item"><a href="{% url 'blog-list' %}" class="nav-link">{% trans 'Blog' %}</a></li>
+
+
+
+
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">{% trans 'Contact' %}</a></li>
+
+            {% if request.user.is_authenticated %}
+					{% if request.user.is_superuser %}
+						<div class="nav-item dropdown">
+							<a class="dropdown-toggle text-light nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							  <img src="{% static 'images/user.png' %}" alt="profile" width="25px" >
+							</a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1" >
+							  <li><a href="{% url 'hotel_manager:dashboard' %}" class="text-dark"><i class="fas fa-user"></i>{% trans 'Profile' %} </a></li>
+								<li><a href="{% url 'logout' %}" class="text-dark"><i class="fas fa-sign-out-alt"></i>{% trans 'Log out' %}</a></li>
+							  </ul>
+						  </div>
+
+
+						{% else %}
+						<div class="nav-item dropdown">
+							<a class="dropdown-toggle text-light nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							  <img src="{{request.user.guest.profile_pic.url}}" alt="profile" width="30px" height="30px" style="border-radius: 50%;">
+							</a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1" >
+							  <li><a href="{% url 'user_profile' %}" class="text-dark"><i class="fas fa-user"></i>{% trans 'My Bookings' %}</a></li>
+							  <li><a href="{% url 'profile_settings' %}" class="text-dark"><i class="fas fa-cog"></i>{% trans 'Profile Settings' %}</a></li>
+							  <li><a href="{% url 'logout' %}" class="text-dark"><i class="fas fa-sign-out-alt"></i> {% trans 'Log out' %}</a></li>
+							  </ul>
+						  </div>
+
+						{% endif %}
+				{% else %}
+					<li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}" >{% trans 'Log in' %}</a></li>
+				{% endif %}
+                    <li class="nav-item my-auto nav-li">
+
+
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <button type="submit" id="btn-lang" name="language" value="{{ language.code }}"
+                                class="nav-lang fa-lg nav-item"
+                                style="border: none;outline: none;background-color: rgba(250, 235, 215, 0);">
+                            {% if language.code == 'en' %}
+                            <a href="{{ language.code }}"><img src="{% static 'images/usa.png' %}" alt="" width="30"></a>
+                            {% else %}
+                            <a href="{{ language.code }}"><img src="{% static 'images/uzb.png' %}" alt="" width="30"></a>
+                            {% endif %}
+                        </button>
+                        {% if language.code == 'en' %} | {% endif %}
+                        {% endfor %}
+                    </form>
+
+                </li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'footer.html' %}
+
+</body>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+  jQuery(window).load(function() {
+      $('#language').change(function() {
+          window.location.replace("/" + $('#language').val() + "/");
+      });
+  });
+  </script>
+</html>

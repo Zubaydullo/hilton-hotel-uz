@@ -1,0 +1,227 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+{% load static %}
+{% load i18n %}
+<!-- stripe  -->
+<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<!-- stripe  -->
+<!-- sweetalert links -->
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">{% trans 'Home' %}</a></span>
+                        <span>{% trans 'My bookings' %}</span>
+                    </p>
+                    <h1 class="mb-4 bread">{% trans 'Reserved Rooms' %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if reserved_rooms %}
+<div class="row">
+  
+</div>
+  {% if total_price > 0 %}
+<p class="pt-1 text-center"><a id="checkout-button" class="btn btn-outline-info btn-custom">{% trans 'Make Payment' %} <span
+    class="icon-long-arrow-right"></span></a></p>
+{% else %}
+<p class="pt-1 text-center"><a href="{% url 'rooms' %}" class="btn btn-outline-info btn-custom">{% trans 'Rooms' %} <span
+  class="icon-long-arrow-right"></span></a></p>
+  {% for message in messages %}
+  <div class="container-fluid p-0">
+    <div class="alert {{ message.tags }} alert-dismissible text-center" role="alert" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+  </div>
+  {% endfor %}
+
+
+{% endif %}
+
+    <div class="card card-body">
+			
+        <table class="table table-sm">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{% trans 'Total price' %}: <span class="icon-long-arrow-right"></span> $ {{total_price}}</th>
+            </tr>
+           
+            <tr>
+                <th>{% trans 'Room Image' %}</th>
+                <th>{% trans 'Room Category' %}</th>
+                <th>{% trans 'Room Number' %}</th>
+                <th>{% trans 'Price (per night)' %}</th>
+                <th>{% trans 'Reservation Date' %}</th>
+                <th>{% trans 'Check In' %}</th>
+                <th>{% trans 'Check Out' %}</th>
+                <th>{% trans 'Status' %}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for reservation in reserved_rooms %}
+                <tr>
+                    <td><img src="{{reservation.room.image_1.url}}" alt="" width="100"></td>
+                    <td>{{reservation.room.category.name}} room</td>
+                    <td>{{reservation.room.room_number}}</td>
+                    <td>$ {{reservation.room.price}}</td>
+                    <td>{{reservation.reservation_date}}</td>
+                    <td>{{reservation.check_in}}</td>
+                    <td>{{reservation.check_out}}</td>
+                    <td>{{reservation.status}}</td>
+                    <td></td>
+                    <td><a href="{% url 'room-single' reservation.room.id %}">{% trans 'View Room' %}</a></td>
+                    <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">{% trans 'Cancel Room' %}</a></td>
+  
+
+
+                </tr>
+                  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Warning!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {% trans 'Are you really sure  to cancel your booking?' %}
+        </div>
+        <div class="modal-footer">
+          <a href="{% url 'cancel_booking' reservation.room.id  %}" class="btn btn-outline-danger">{% trans 'Yes' %}</a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans 'Close' %}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                {% endfor %}
+        </table>
+    </div>
+
+  
+
+
+{% else %}
+
+    <p class="text-center">{% trans "You haven't made a reservation yet!" %}</p>
+    <p class="pt-1 text-center"><a href="{% url 'rooms' %}" class="btn btn-outline-danger btn-custom ">{% trans 'Rooms' %}<span
+        class="icon-long-arrow-right"></span></a></p>
+{% endif %}
+    {% csrf_token %}
+
+
+
+
+<script>
+    var checkoutButton = document.getElementById("checkout-button");
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
+    
+    checkoutButton.addEventListener("click", function () {
+        
+        fetch("{% url 'create-checkout-session' i %}", {
+            method: "POST",
+            headers: {
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function (result) {
+                // If redirectToCheckout fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using error.message.
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+            });
+    });
+    
+
+    // Swal.fire({
+    //     title: 'Payment Process must end in 24 hours. Or in case, your reservation will be cancelled!',
+    //     showClass: {
+    //         popup: 'animate__animated animate__fadeInDown'
+    //     },
+    //     hideClass: {
+    //         popup: 'animate__animated animate__fadeOutUp'
+    //     }
+    // })
+
+
+            const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger'
+  },
+  buttonsStyling: false
+})
+
+swalWithBootstrapButtons.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel!',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
+})
+
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+{% endblock %} 
+
+

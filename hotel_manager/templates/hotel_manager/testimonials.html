@@ -1,0 +1,42 @@
+{% extends 'hotel_manager/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-right">
+                            <a class="au-btn au-btn-icon au-btn--green au-btn--small"
+                               href="{% url 'hotel_manager:testimonials-create' %}">
+                                <i class="zmdi zmdi-plus"></i>add Testimonials</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for testimonial in testimonials %}
+                <div class="col-lg-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{testimonial.image.url}}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{testimonial.name}}</h5>
+                                    <p class="card-text">{{testimonial.comment}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

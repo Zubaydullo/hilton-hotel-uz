@@ -1,0 +1,39 @@
+{% extends 'hotel_manager/base.html' %}
+{% block content %}
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="table-data__tool">
+                <div class="table-data__tool-right">
+                    <a class="au-btn au-btn-icon au-btn--green au-btn--small"
+                        href="{% url 'hotel_manager:restaurant-create' %}">
+                        <i class="zmdi zmdi-plus"></i>add New Food</a>
+                </div>
+            </div>
+            <div class="row">
+
+                {% for food in foods %}
+                <div class="col-lg-4">
+                    <div class="card">
+                        <img src="{{food.food_image.url}}" alt="" class="">
+                        <div class="card-body text-center">
+                            <p>{{food.food_name}}</p>
+                            <p>$ {{food.price}}</p>
+                            <a href="{% url 'hotel_manager:restaurant-update' food.id %}" class="btn btn-primary">Update</a>
+                            <a href="{% url 'hotel_manager:restaurant-delete' food.id %}" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

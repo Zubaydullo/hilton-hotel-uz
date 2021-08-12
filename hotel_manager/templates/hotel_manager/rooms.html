@@ -1,0 +1,57 @@
+{% extends 'hotel_manager/base.html' %}
+{% block content %}
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-right">
+                            <a class="au-btn au-btn-icon au-btn--green au-btn--small" href="{% url 'hotel_manager:room-create' %}">
+                                <i class="zmdi zmdi-plus"></i>add Room</a>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive table--no-card m-b-30">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>Room Category</th>
+                                    <th>Room Number</th>
+                                    <th class="text-right">Price(per night)</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for room in rooms %}
+                                <tr>
+                                    <td>{{room.category.name}} room</td>
+
+                                    <td class="text-center">{{room.room_number}}</td>
+                                    <td class="text-center">$ {{room.price}}</td>
+                                    <td>{{room.status}}</td>
+                                    <td><a class="btn btn-outline-info"
+                                            href="{% url 'hotel_manager:room-update' room.id %}">Update</a>
+                                        <a class="btn btn-outline-danger" href="{% url 'hotel_manager:room-delete' room.id %}">Delete</a>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

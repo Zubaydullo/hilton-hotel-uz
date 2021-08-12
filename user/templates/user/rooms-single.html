@@ -1,0 +1,125 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+                            class="mr-2"><a href="index.html">{% trans 'Home' %}</a></span> <span class="mr-2"><a
+                            href="{% url 'rooms' %}">{% trans 'Room' %}</a></span> <span>{% trans 'Room Single' %}</span></p>
+                    <h1 class="mb-4 bread">{% trans 'Room Single' %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12 ftco-animate">
+                        <h2 class="mb-4">{{room.category.name}} {% trans 'Room' %}</h2>
+                        <div class="single-slider owl-carousel">
+                            <div class="item">
+                                <div class="room-img" style="background-image: url({{room.image_1.url}});"></div>
+                            </div>
+                            <div class="item">
+                                <div class="room-img" style="background-image: url({{room.image_2.url}});"></div>
+                            </div>
+                            <div class="item">
+                                <div class="room-img" style="background-image: url({{room.image_3.url}});"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                        <p>{{room.explanation}}</p>
+                        <div class="d-md-flex mt-5 mb-5">
+                            <ul class="list">
+                                <li><span>Max:</span> {{room.adults}} {% trans 'people' %}</li>
+                                <li><span>{% trans 'Size' %}:</span> {{room.room_size}} m2</li>
+                            </ul>
+                            <ul class="list ml-md-5">
+                                <li><span>{% trans 'View' %}:</span> {{room.view}} {% trans 'View' %}</li>
+                                <li><span>{% trans 'Bed' %}:</span> {{room.bed}}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box ftco-animate">
+                    <h3>Recent Blog</h3>
+                    {% for blog in blogs %}
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="blog-img mr-4" style="background-image: url({{blog.blog_image.url}});"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="{% url 'blog-single' blog.id %}">{{blog.blog_text|truncatechars:40}}</a></h3>
+                            <div class="meta">
+                                <div><a href="#"><span class="icon-calendar"></span> {{blog.date_created}}</a></div>
+                                <div><a href="#"><span class="icon-person"></span>by Admin</a></div>
+                                <div><a href="#"><span class="icon-chat"></span> {{blog.comments.all.count}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                <div class="sidebar-box ftco-animate">
+                    <div class="sidebar-wrap bg-light ftco-animate">
+                        <h3>{% trans 'Room facilities includes' %}: </h3>
+                        <ul class="list-group">
+                            {% for room_facility in room_facilities %}
+                            <li class="list-group-item">{{room_facility.facility_name}}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
+                <h4 class="mb-4">{% trans 'Available Rooms' %}</h4>
+                <div class="row">
+                    {% for available_room in available_rooms %}
+                    <div class="col-lg-4 col-sm-12 col-md-6 ftco-animate">
+                        <div class="room">
+                            <a href="{% url 'room-single' available_room.id %}"
+                               class="img img-2 d-flex justify-content-center align-items-center"
+                               style="background-image: url({{available_room.image_1.url}});">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-search2"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3 text-center">
+                                <h3 class="mb-3"><a href="{% url 'room-single' available_room.id %}">{{available_room.category.name}} {% trans 'Room' %}</a>
+                                </h3>
+                                <p><span class="price mr-2">$ {{available_room.price}}</span> <span
+                                        class="per">{% trans 'per night' %}</span></p>
+                                <hr>
+                                <p class="pt-1"><a href="{% url 'room-single' available_room.id %}"
+                                                   class="btn-custom">{% trans 'View Room Details' %}<span
+                                        class="icon-long-arrow-right"></span></a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section> <!-- .section -->
+
+
+{% endblock %}

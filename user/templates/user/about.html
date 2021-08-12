@@ -1,0 +1,170 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+
+
+<title>{% block title %} {% trans 'About' %} {% endblock%}</title>
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+            <div class="text">
+              <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>About</span></p>
+              <h1 class="mb-4 bread">About Us</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <section class="ftco-section ftco-counter" id="section-counter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row">
+          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 text-center" >
+            <div class="text">
+            <strong class="number" data-number="{{happy_guests}}"></strong>
+            <span >{% trans 'Happy Guests' %}</span>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 text-center">
+            <div class="text">
+            <strong class="number" data-number="{{num_rooms}}">0</strong>
+            <span>{% trans 'Rooms' %}</span>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 text-center">
+            <div class="text">
+            <strong class="number" data-number="100">0</strong>
+            <span>{% trans 'Guest Stasfication' %}</span>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+          <div class="block-18 text-center">
+            <div class="text">
+            <strong class="number" data-number="100">0</strong>
+            <span>{% trans 'Daily Hotel Visitors' %} </span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="ftco-section ftc-no-pb ftc-no-pt">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url({% static 'images/hilton-bg-1.jpg' %}); border-radius: 100%;">
+					<a href="{% static 'hotel_description.mp4' %}" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+						<span class="icon-play"></span>
+					</a>
+				</div>
+				<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+		  <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
+			  <div class="ml-md-0">
+				  <span class="subheading">{% trans 'Welcome to Hilton Hotel' %}</span>
+				<h2 class="mb-4">{% trans 'Welcome To Our Hotel' %}</h2>
+			</div>
+		  </div>
+		  <div class="pb-md-5">
+			  			<p>{% trans "In the center of Tashkent City, we're within 10 minutes of Chorsu Bazaar and the Alisher Navoï Opera. We’re around the corner from two metro stations — part of a line famed for unique architecture and ornate decor at each stop. Our hotel features an indoor pool, spa, and a rooftop terrace and Pan Asian restaurant." %}</p>
+						<ul class="ftco-social d-flex">
+			<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			<li class="ftco-animate"><a href="https://www.facebook.com/internationalhotel.tashkent"><span class="icon-facebook"></span></a></li>
+			<li class="ftco-animate"><a href="https://www.instagram.com/hiltontashkentcityhotel/"><span class="icon-instagram"></span></a></li>
+		  </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    
+  <section class="ftco-section" id="services">
+    <div class="container text-center">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+  View more facilities
+</button>
+    <div class="row d-flex">
+      {% for amenity in amenities %}
+      <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+      <div class="media block-6 services py-4 d-block text-center">
+        <div class="d-flex justify-content-center">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="{{amenity.icon_class}}"></span>
+          </div>
+        </div>
+        <div class="media-body p-2 mt-2">
+        <h3 class="heading mb-3">{{amenity.heading}}</h3>
+        </div>
+      </div>      
+      </div>
+      {% endfor %}
+    </div>
+  
+  
+    </div>
+  </section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        {% for room_facility in room_facilities %}
+        <p><i class="fas fa-check fa-lg"></i> {{room_facility.facility_name}}</p>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <section class="instagram mt-4">
+    <div class="container-fluid">
+    <div class="row no-gutters justify-content-center pb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+      <h2><span>Instagram</span></h2>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      {% for insta in instagram_images %}
+      <div class="col-sm-12 col-md ftco-animate">
+      <a href="{{insta.image.url}}" class="insta-img image-popup">
+        <img src="{{insta.image.url}}" alt="">
+      </a>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'main2.html' %}
+
+{% block content %}
+{% load i18n %}
+{% load static %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+            <div class="text">
+              <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'home' %}">{% trans 'Home' %}</a></span> <span class="mr-2"><a href="{% url 'blog-list' %}">Blog</a></span> <span>{% trans 'Blog Single' %}</span></p>
+              <h1 class="mb-4 bread">{% trans 'Blog Single' %}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section class="ftco-section ftco-degree-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 ftco-animate order-md-last">
+          <h2 class="mb-3">{{blog.blog_heading}}</h2>
+          <p>{{blog.blog_text}}</p>
+          <p>
+            <img src="images/image_7.jpg" alt="" class="img-fluid">
+          </p>
+          <div class="tag-widget post-tag-container mb-5 mt-5">
+            <div class="tagcloud">
+              {% for tag in blog.tags.all %}
+                 <a href="#" class="tag-cloud-link">{{tag.name}}</a>
+              {% endfor %}
+            </div>
+          </div>
+          
+
+
+          <div class="pt-5 mt-5">
+            {% with comments.count as total_comments %}
+            <h3 class="mb-5"> {{ total_comments }} comment{{ total_comments|pluralize }}</h3>
+            {% endwith %}
+            <ul class="comment-list">
+              {% for comment in comments %}
+              <li class="comment">
+                <div class="vcard bio">
+                  <img src="{{comment.guest.profile_pic.url}}" alt="Image placeholder user">
+                </div>
+                <div class="comment-body">
+                  <h3>{{comment.guest.user.username}}</h3>
+                  <div class="meta">{{ comment.date_created }}</div>
+                  <p>{{ comment.message }}</p>
+                 
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+            <!-- END comment-list -->
+            
+            <div class="comment-form-wrap pt-5">
+              <h3 class="mb-5">{% trans 'Leave a comment' %}</h3>
+              <form action="#" method="post" class="p-5 bg-light">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <label for="message">{% trans 'Message' %}</label>
+                  <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div> <!-- .col-md-8 -->
+
+        <div class="col-lg-4 sidebar ftco-animate">
+          <div class="sidebar-box">
+              <img src="{{blog.blog_image.url}}" alt="model image" width="100%">
+          </div>
+
+          <div class="sidebar-box ftco-animate">
+            <h3>{% trans 'Recent Blogs' %}</h3>
+            {% for recent_blog in blogs %}
+            <div class="block-21 mb-4 d-flex">
+                <img src="{{recent_blog.blog_image.url}}" alt="blog_image" width="50%" class="mr-2">
+              <div class="text">
+                <h3 class="heading"><a href="{% url 'blog-single' recent_blog.id %}">{{recent_blog.blog_heading}}</a></h3>
+                <div class="meta">
+                  <div><span class="icon-calendar">{{ recent_blog.date_created }}</span></div>
+                  <div><span class="icon-person">by admin</span></div>
+                  <div><span class="icon-chat"></span>{{recent_blog.comments.all.count}}</div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div class="sidebar-box ftco-animate">
+            <h3>{% trans 'Tag Cloud' %}</h3>
+            <div class="tagcloud">
+              {% for tag in tags %}
+              <a href="{% url 'post_list_by_tag' tag.slug %}" class="tag-cloud-link">
+                {{tag.name}}
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section> <!-- .section -->
+
+
+{% endblock %}

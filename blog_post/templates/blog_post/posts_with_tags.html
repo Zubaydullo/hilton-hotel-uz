@@ -1,0 +1,48 @@
+{% extends 'main2.html' %}
+{% load static %}
+{% block content %}
+{% load i18n %}
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+            <div class="text">
+              <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">{% trans 'Home' %}</a></span> <span>Post</span></p>
+              <h1 class="mb-4 bread">{% block title %}{% trans 'Posts tagged with' %} "{{ tag.name }}"{% endblock %}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<section class="ftco-section">
+    <div class="container">
+      <div class="row d-flex">
+          {% for blog in blogs %}
+        <div class="col-md-3 d-flex ftco-animate">
+          <div class="blog-entry align-self-stretch">
+            <!-- <a href="#" class="block-20" style="background-image: url('images/image_1.jpg');"></a> -->
+			<img src="{{blog.blog_image.url}}" alt="blog_image" width="100%" height="50%">
+            <div class="text mt-3 d-block">
+              <h3 class="heading mt-3"><a href="{% url 'blog-single' blog.id %}">{{blog.blog_heading}}</a></h3>
+              <div class="meta mb-3">
+                <div><a href="#">{{blog.date_created}}</a></div>
+                <div><a href="#">{{blog.admin}}</a></div>
+                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% include "pagination.html" with page=blogs %}
+        
+
+    </div>
+</div>
+</section>
+
+
+{% endblock %}

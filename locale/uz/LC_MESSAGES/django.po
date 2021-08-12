@@ -1,0 +1,491 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-29 18:31+0500\n"
+"PO-Revision-Date: 2021-07-29 18:36+0428\n"
+"Last-Translator: b'  <admin@gmail.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.9.6\n"
+
+#: .\templates\footer.html:7
+#, fuzzy
+#| msgid "Welcome to Hilton Hotel"
+msgid "Hilton Hotel"
+msgstr "Hilton Mehmonxonasiga Xush Kelibsiz"
+
+#: .\templates\footer.html:8
+msgid "Unlock new memories at our hotels around the world."
+msgstr "Dunyo bo'ylab mehmonxonalarimizda yangi xotiralarni oching."
+
+#: .\templates\footer.html:17
+msgid "Useful Links"
+msgstr "Foydali havolalar"
+
+#: .\templates\footer.html:19 .\templates\main.html:245
+#: .\templates\main2.html:52 .\templates\navbar.html:16
+#: .\user\templates\user\about.html:42 .\user\templates\user\rooms.html:13
+#: .\user\templates\user\rooms.html:15 .\user\templates\user\user.html:37
+#: .\user\templates\user\user.html:130
+msgid "Rooms"
+msgstr "Xonalar"
+
+#: .\templates\footer.html:20 .\templates\main2.html:55
+#: .\templates\navbar.html:19
+msgid "Blog"
+msgstr "Blog"
+
+#: .\templates\footer.html:21 .\templates\main2.html:53
+#: .\templates\navbar.html:17 .\user\templates\user\restaurant.html:8
+msgid "Restaurant"
+msgstr "Restaurant"
+
+#: .\templates\footer.html:27
+msgid "Privacy"
+msgstr "Maxfiylik"
+
+#: .\templates\footer.html:29
+#, fuzzy
+#| msgid "About"
+msgid "About Us"
+msgstr "Haqida"
+
+#: .\templates\footer.html:30 .\user\templates\user\contact.html:6
+#: .\user\templates\user\contact.html:16
+#| msgid "Contact"
+msgid "Contact Us"
+msgstr "Biz bilan bog'laning"
+
+#: .\templates\footer.html:31
+#, fuzzy
+#| msgid "Room Service"
+msgid "Services"
+msgstr "Xona xizmati"
+
+#: .\templates\footer.html:37
+msgid "Have a Questions?"
+msgstr "Savolingiz bormi?"
+
+#: .\templates\main.html:62
+msgid "Welcome To Hilton"
+msgstr "Hilton mehmonxonasiga xush kelibsiz"
+
+#: .\templates\main.html:63 .\templates\main.html:93
+msgid "Hotels"
+msgstr "Mehmonxonalar"
+
+#: .\templates\main.html:63 .\templates\main.html:93
+msgid "Resorts"
+msgstr "Dam olish maskanlari"
+
+#: .\templates\main.html:78
+msgid "Enjoy A Luxury Experience"
+msgstr "Hashamatli tajribadan zavqlaning"
+
+#: .\templates\main.html:79
+msgid "Join With Us"
+msgstr "Bizga qo'shiling"
+
+#: .\templates\main.html:92
+msgid "Luxurious Stay"
+msgstr "Hashamatli turar joy"
+
+#: .\templates\main.html:117 .\user\templates\user\about.html:79
+msgid "Welcome to Hilton Hotel"
+msgstr "Hilton Mehmonxonasiga Xush Kelibsiz"
+
+#: .\templates\main.html:118 .\user\templates\user\about.html:80
+msgid "Welcome To Our Hotel"
+msgstr "Biz mehmonxonamizga xush kelibsiz"
+
+#: .\templates\main.html:143
+msgid "View more facilities"
+msgstr "Boshqa imkoniyatlarni ko'ring"
+
+#: .\templates\main.html:171
+msgid "Hotel Facilities"
+msgstr "Mehmonxona imkoniyatlari"
+
+#: .\templates\main.html:195
+#, fuzzy
+#| msgid "Rooms"
+msgid "Our Rooms"
+msgstr "Xonalar"
+
+#: .\templates\main.html:210 .\user\templates\user\rooms-single.html:13
+#: .\user\templates\user\rooms-single.html:28
+#: .\user\templates\user\rooms-single.html:104
+#: .\user\templates\user\rooms.html:39
+#, fuzzy
+#| msgid "Rooms"
+msgid "Room"
+msgstr "Xonalar"
+
+#: .\templates\main.html:211 .\user\templates\user\rooms-single.html:107
+#: .\user\templates\user\rooms.html:40
+msgid "per night"
+msgstr "1 tun uchun"
+
+#: .\templates\main.html:215 .\user\templates\user\rooms-single.html:110
+msgid "View Room Details"
+msgstr "Ushbu xonani ko'zdan kechirish"
+
+#: .\templates\main.html:237 .\user\templates\user\about.html:34
+msgid "Happy Guests"
+msgstr "Mamnun mehmonlar"
+
+#: .\templates\main.html:253 .\user\templates\user\about.html:50
+msgid "Guest Stasfication"
+msgstr "Qoniqish darajasi"
+
+#: .\templates\main.html:261 .\user\templates\user\about.html:58
+msgid "Daily Hotel Visitors"
+msgstr "Mehmonxona tashriflari kuniga"
+
+#: .\templates\main.html:290
+msgid "Guests"
+msgstr "Mehmonlar"
+
+#: .\templates\main.html:308
+msgid "Recent Blog"
+msgstr "So'ngi Blog"
+
+#: .\templates\main.html:331
+msgid "No posts!"
+msgstr "Hech qanday xabar yo'q!"
+
+#: .\templates\main2.html:51 .\templates\navbar.html:15
+#: .\user\templates\user\contact.html:15
+#: .\user\templates\user\rooms-single.html:12
+#: .\user\templates\user\user.html:19
+msgid "Home"
+msgstr "Bosh sahifa"
+
+#: .\templates\main2.html:54 .\templates\navbar.html:18
+#: .\user\templates\user\about.html:7
+msgid "About"
+msgstr "Haqida"
+
+#: .\templates\main2.html:60 .\templates\navbar.html:20
+#: .\user\templates\user\contact.html:15
+msgid "Contact"
+msgstr "Bog'lanish"
+
+#: .\templates\main2.html:69 .\templates\navbar.html:32
+msgid "Profile"
+msgstr "Shaxsiy sahifa"
+
+#: .\templates\main2.html:70 .\templates\main2.html:83
+#: .\templates\navbar.html:34 .\templates\navbar.html:52
+msgid "Log out"
+msgstr "Chiqish"
+
+#: .\templates\main2.html:81 .\templates\navbar.html:48
+msgid "My Bookings"
+msgstr "Mening Bronlarim"
+
+#: .\templates\main2.html:82 .\templates\navbar.html:50
+msgid "Profile Settings"
+msgstr "Sahifa settings"
+
+#: .\templates\main2.html:89 .\templates\navbar.html:59
+msgid "Log in"
+msgstr "Kirish"
+
+#: .\templates\navbar.html:114
+msgid "Login"
+msgstr "Kirish"
+
+#: .\templates\navbar.html:116 .\user\templates\user\registration.html:83
+msgid "or"
+msgstr "yoki"
+
+#: .\templates\navbar.html:117 .\user\templates\user\registration.html:84
+msgid "Login with your google account"
+msgstr "Google hisobingiz bilan kiring"
+
+#: .\templates\navbar.html:125 .\user\templates\user\login.html:53
+#: .\user\templates\user\registration.html:81
+msgid "Forgot Password?"
+msgstr "Parolni unutdingizmi?"
+
+#: .\templates\navbar.html:127
+msgid "Don't have an account?"
+msgstr "Hisobingiz yo'qmi?"
+
+#: .\templates\navbar.html:128
+msgid "Sign up here!"
+msgstr "Bu erda ro'yxatdan o'ting!"
+
+#: .\templates\pagination.html:3
+msgid "Previous"
+msgstr "Oldingi"
+
+#: .\templates\pagination.html:6
+msgid "Next"
+msgstr "Keyingisi"
+
+#: .\user\templates\user\about.html:84
+msgid ""
+"In the center of Tashkent City, we're within 10 minutes of Chorsu Bazaar and"
+" the Alisher Navoï Opera. We’re around the corner from two metro stations — "
+"part of a line famed for unique architecture and ornate decor at each stop. "
+"Our hotel features an indoor pool, spa, and a rooftop terrace and Pan Asian "
+"restaurant."
+msgstr ""
+"Toshkent shahrining markazida biz Chorsu bozori va Alisher Navoiy nomli "
+"operadan 10 daqiqada turibmiz. Biz ikkita metro stantsiyasining atrofida - "
+"har bir bekatda noyob me'morchilik va bezakli dekor bilan mashhur bo'lgan "
+"chiziqning bir qismi. Bizning mehmonxonamizda yopiq basseyn, kurort va tom "
+"tomondagi teras va Pan Osiyo restorani mavjud."
+
+#: .\user\templates\user\booking.html:38 .\user\templates\user\rooms.html:42
+#: .\user\templates\user\user.html:73
+#, fuzzy
+#| msgid "Room Service"
+msgid "Room Number"
+msgstr "Xona xizmati"
+
+#: .\user\templates\user\booking.html:40
+msgid "Make your reservation"
+msgstr "Buyurtma qiling"
+
+#: .\user\templates\user\booking.html:70
+msgid "Select your room"
+msgstr "Xonangizni tanlang"
+
+#: .\user\templates\user\booking.html:71
+msgid "room"
+msgstr "xona"
+
+#: .\user\templates\user\booking.html:84
+msgid "Num of Adults"
+msgstr "Kattalar soni"
+
+#: .\user\templates\user\booking.html:104
+msgid "Num of Children"
+msgstr "Bolalar soni"
+
+#: .\user\templates\user\booking.html:145 .\user\templates\user\rooms.html:50
+msgid "Book Now"
+msgstr "Endi buyurtma qiling"
+
+#: .\user\templates\user\contact.html:28
+msgid "Contact Information"
+msgstr "Bog'lanish uchun"
+
+#: .\user\templates\user\contact.html:39
+msgid "Phone"
+msgstr "Telefon raqam"
+
+#: .\user\templates\user\login.html:28
+#, fuzzy
+#| msgid "Log in"
+msgid "Log In"
+msgstr "Kirish"
+
+#: .\user\templates\user\login.html:56
+msgid "Login with your social media account"
+msgstr "Ijtimoiy media hisob qaydnomangiz bilan kiring"
+
+#: .\user\templates\user\profile_settings.html:24
+#, fuzzy
+#| msgid "Profile"
+msgid "Back to Profile"
+msgstr "Shaxsiy sahifa"
+
+#: .\user\templates\user\profile_settings.html:26
+#, fuzzy
+#| msgid "Profile Settings"
+msgid "Account Settings"
+msgstr "Sahifa settings"
+
+#: .\user\templates\user\registration.html:31
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\user\templates\user\restaurant.html:32
+msgid "Our Restaurant"
+msgstr "Bizning Restaurant"
+
+#: .\user\templates\user\restaurant.html:33
+msgid "We Are Food Lovers"
+msgstr "Biz oziq-ovqat mahsulotlarini sevuvchilarmiz"
+
+#: .\user\templates\user\restaurant.html:37
+msgid ""
+"On her way she met a copy. The copy warned the Little Blind Text, that where"
+" it came from it would have been rewritten a thousand times."
+msgstr ""
+"Yo'lda u bir nusxasini uchratdi. Nusxasi Kichik Ko'zi ojiz matnni, u qaerdan"
+" kelib chiqqan bo'lsa, ming marta qayta yozilgan bo'lishi haqida "
+"ogohlantirgan."
+
+#: .\user\templates\user\restaurant.html:38
+msgid ""
+"When she reached the first hills of the Italic Mountains, she had a last "
+"view back on the skyline of her hometown Bookmarksgrove, the headline of "
+"Alphabet Village and the subline of her own road, the Line Lane. Pityful a "
+"rethoric question ran over her cheek, then she continued her way."
+msgstr ""
+"U Italik tog'larning birinchi tepaliklariga etib borganida, u so'nggi marta "
+"o'zining tug'ilgan shahri Bookmarksgrove silsilasini, Alphabet Village "
+"sarlavhasi va o'z yo'lining pastki chizig'i Line Lane-ni ko'rdi. Achinarli "
+"retorik savol uning yonog'iga yugurdi, keyin u yo'lini davom ettirdi."
+
+#: .\user\templates\user\restaurant.html:39
+msgid ""
+"On her way she met a copy. The copy warned the Little Blind Text, that where"
+" it came from it would have been rewritten a thousand times and everything "
+"that was left from its origin would be the word \"and\" and the Little Blind"
+" Text should turn around and return to its own, safe country."
+msgstr ""
+"Yo'lda u bir nusxasini uchratdi. Nusxa Kichik Ko'zi ojiz matni, u qaerdan "
+"kelib chiqqan bo'lsa, ming marta qayta yozilgan bo'lishi va uning paydo "
+"bo'lishidan qolgan hamma narsa \"va\" so'zi bo'lishi haqida ogohlantirgan, "
+"va Kichik Ko'zi ojiz matn aylanib o'z holiga qaytishi kerak, xavfsiz "
+"mamlakat."
+
+#: .\user\templates\user\rooms-single.html:13
+#: .\user\templates\user\rooms-single.html:14
+#, fuzzy
+#| msgid "Room Service"
+msgid "Room Single"
+msgstr "Xona xizmati"
+
+#: .\user\templates\user\rooms-single.html:45
+msgid "people"
+msgstr "odamlar"
+
+#: .\user\templates\user\rooms-single.html:46
+#: .\user\templates\user\rooms.html:45
+msgid "Size"
+msgstr "Hajmi"
+
+#: .\user\templates\user\rooms-single.html:49
+#: .\user\templates\user\rooms.html:46
+msgid "View"
+msgstr "Ko'rinish"
+
+#: .\user\templates\user\rooms-single.html:50
+msgid "Bed"
+msgstr "To'shak"
+
+#: .\user\templates\user\rooms-single.html:79
+msgid "Room facilities includes"
+msgstr "Xona jihozlari o'z ichiga oladi"
+
+#: .\user\templates\user\rooms-single.html:91
+msgid "Available Rooms"
+msgstr "Mavjud xonalar"
+
+#: .\user\templates\user\rooms.html:61
+msgid "Advanced Search"
+msgstr "Kengaytirilgan qidiruv"
+
+#: .\user\templates\user\rooms.html:75
+msgid "Main amenities"
+msgstr "Asosiy qulayliklar"
+
+#: .\user\templates\user\user.html:20
+#, fuzzy
+#| msgid "My Bookings"
+msgid "My bookings"
+msgstr "Mening Bronlarim"
+
+#: .\user\templates\user\user.html:22
+#, fuzzy
+#| msgid "Rooms"
+msgid "Reserved Rooms"
+msgstr "Xonalar"
+
+#: .\user\templates\user\user.html:34
+msgid "Make Payment"
+msgstr "To'lovni amalga oshiring"
+
+#: .\user\templates\user\user.html:67
+msgid "Total price"
+msgstr "Umumiy narx"
+
+#: .\user\templates\user\user.html:71
+msgid "Room Image"
+msgstr "Xona tasviri"
+
+#: .\user\templates\user\user.html:72
+msgid "Room Category"
+msgstr "Xona toifasi"
+
+#: .\user\templates\user\user.html:74
+#, fuzzy
+#| msgid "per night"
+msgid "Price (per night)"
+msgstr "1 tun uchun"
+
+#: .\user\templates\user\user.html:75
+msgid "Reservation Date"
+msgstr "Band qilish sanasi"
+
+#: .\user\templates\user\user.html:76
+msgid "Check In"
+msgstr "Kelish sanasi"
+
+#: .\user\templates\user\user.html:77
+msgid "Check Out"
+msgstr "Ketish sanasi"
+
+#: .\user\templates\user\user.html:78
+msgid "Status"
+msgstr "Holat"
+
+#: .\user\templates\user\user.html:94
+#, fuzzy
+#| msgid "View Room Details"
+msgid "View Room"
+msgstr "Ushbu xonani ko'zdan kechirish"
+
+#: .\user\templates\user\user.html:95
+msgid "Cancel Room"
+msgstr "Xonani bekor qilish"
+
+#: .\user\templates\user\user.html:111
+msgid "Are you really sure  to cancel your booking?"
+msgstr "Siz, rostan ham, bronni bekor qilishga aminmisiz?"
+
+#: .\user\templates\user\user.html:114
+msgid "Yes"
+msgstr "Ha"
+
+#: .\user\templates\user\user.html:115
+msgid "Close"
+msgstr "Yopish"
+
+#: .\user\templates\user\user.html:129
+msgid "You haven't made a reservation yet!"
+msgstr "Siz hali bron qilmadingiz!"
+
+#~ msgid "A small river named Duden flows by their place and supplies."
+#~ msgstr "Duden nomli kichik daryo ularning joylari va ta'minoti bilan oqadi."
+
+#, fuzzy
+#~ msgid "Restaurant Bar"
+#~ msgstr "Restaurant"
+
+#~ msgid "Free Wifi"
+#~ msgstr "Bepul internet tarmog'i"
+
+#~ msgid "Fitness"
+#~ msgstr "Fitness zallari"
+
+#~ msgid "Meeting Rooms"
+#~ msgstr "Uchrashuv xonalari"
