@@ -27,11 +27,31 @@ def blog_list(request):
 	return render(request, 'blog_post/blog_list.html', context)
 
 
-@unauthenticated_user
+def like_blog(request, pk):
+	blog = Blog.objects.get(id=pk)
+	if request.method == 'POST':
+		liked = False
+		if blog.likes.filter(id=request.user.id).exists():
+			blog.likes.remove(request.user)
+			liked = False
+		else:
+			blog.likes.add(request.user)
+			liked = True
+	return HttpResponseRedirect(reverse('blog-single', args=[str(pk)]))
+
+
+
 def blog_single(request, pk):
 	blogs = Blog.objects.order_by("-date_created")[:3]
 	blog = Blog.objects.get(id=pk)
 	comments = blog.comments.filter(active=True)
+	
+	# liking section 
+	total_likes = blog.total_likes()
+	liked = False
+	if blog.likes.filter(id=request.user.id).exists():
+		liked = True
+
 
 	new_comment = None	
 	tags =Tag.objects.all()
@@ -51,7 +71,7 @@ def blog_single(request, pk):
 
 
 	context = {'blog_comment_form': blog_comment_form,
-	'blog': blog, 'blogs': blogs, 'comments': comments, 'tags':tags}
+	'blog': blog, 'blogs': blogs, 'comments': comments, 'tags':tags, 'total_likes': total_likes, 'liked':liked}
 	return render(request, 'blog_post/blog_single.html', context)
 
 

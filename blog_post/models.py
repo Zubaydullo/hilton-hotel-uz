@@ -10,8 +10,14 @@ class Blog(models.Model):
 	blog_heading = models.CharField(max_length=100, null=True)
 	blog_text = models.CharField(max_length=255, null=True)
 	date_created = models.DateTimeField(auto_now_add=True)
-	
+	likes = models.ManyToManyField(User, related_name="blog_posts")
+
 	tags = TaggableManager()
+
+
+	def total_likes(self):
+		return self.likes.count()
+
 
 	def __str__(self):
 		return self.blog_heading
@@ -27,3 +33,5 @@ class BlogComment(models.Model):
 
 	def __str__(self):
 		return self.message
+
+

@@ -22,6 +22,20 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 ftco-animate order-md-last">
+          <form action="{% url 'like_blog' blog.id  %}" method="POST">
+            {% csrf_token %}
+            {% if request.user.is_authenticated %}
+                {% if liked %}
+                  <button type="submit" value="{{ blog.id }}" class="btn btn-danger btn-sm">Unlike</button>
+                {% else %}
+                  <button type="submit" value="{{ blog.id }}" class="btn btn-primary btn-sm">Like</button>
+                {% endif %}
+            {% else %}
+                <a href="{% url 'user_login' %}">Login to like</a>
+            {% endif %}
+            - {{total_likes}} Likes
+        </form>
+
           <h2 class="mb-3">{{blog.blog_heading}}</h2>
           <p>{{blog.blog_text}}</p>
           <p>
