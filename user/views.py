@@ -148,7 +148,7 @@ checkout_session_id = ""
 class CreateCheckoutSessionView(View):
 		def post(self, request, *args, **kwargs):
 			global checkout_session_id
-			YOUR_DOMAIN = "http://127.0.0.1:8000"
+			YOUR_DOMAIN = "http://hilton-hotel-uz.herokuapp.com"
 			checkout_session = stripe.checkout.Session.create(
 					payment_method_types=['card'],
 					line_items=[
