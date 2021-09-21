@@ -3,6 +3,8 @@ from django import contrib
 from django.db.models.query_utils import RegisterLookupMixin
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect, reverse
+from django.urls import resolve
+
 from .forms import ContactUsForm, ProfileForm
 from django.core.mail import send_mail
 from .models import *
@@ -30,6 +32,7 @@ from django.contrib.auth.models import Group
 
 
 def main(request):
+	print(resolve(request.path).url_name)
 	blogs = Blog.objects.order_by("-date_created")[:4]
 	rooms = Room.objects.filter(status='Available').order_by("-date_created")[:6]
 	testimonials = Testimonials.objects.all()

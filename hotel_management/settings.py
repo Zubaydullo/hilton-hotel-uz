@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(t2okz7b_d+nzsj&lljsm09&6dt5(ny2c&7w3e1==#!kwy2(*('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'hilton-hotel-uz.herokuapp.com', '127.0.0.1']
 
@@ -189,6 +189,7 @@ EMAIL_USE_TLS = True
 # Stripe Payment Api keys 
 STRIPE_PUBLIC_KEY = 'pk_test_51JBIQEKXYtrtH6n6xvbgYU4CIHUSGkmMUKwE1V2sCS3o0A3wlHdkTA5mOwAu3amfVtazpbYNgiY0Q0NmgtHND6ud0070sgQIbO'
 STRIPE_SECRET_KEY = 'sk_test_51JBIQEKXYtrtH6n6IC0FHjFpPvMyFp4Uu408ek7pZDGLXXQ61ZMonjWHLTus2iIdmD00ED7mevHHm3JJp8nE6Eed00ZiqjZtk5'
+
 
 #Good Integration
 SOCIALACCOUNT_PROVIDERS = {
