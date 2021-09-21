@@ -161,9 +161,10 @@ MESSAGE_TAGS = {
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'hotel_manager/static'),
+    os.path.join(BASE_DIR, 'user/static')
+]
 
 MEDIA_URL = '/media/'
 
