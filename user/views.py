@@ -352,7 +352,6 @@ def admin_profile(request):
 
 def user_signup(request):
 	userform = UserForm()
-
 	if request.method == 'POST':
 		userform = UserForm(request.POST)
 		if userform.is_valid():
@@ -363,8 +362,6 @@ def user_signup(request):
 			user.groups.add(group)
 
 			Guest.objects.create(user=user, first_name=name['username'])
-
-
 
 			messages.success(request, 'Account has been successfully created!')
 			return redirect('home')
