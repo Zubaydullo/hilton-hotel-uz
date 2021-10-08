@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(t2okz7b_d+nzsj&lljsm09&6dt5(ny2c&7w3e1==#!kwy2(*(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'hilton-hotel-uz.herokuapp.com', '127.0.0.1', 'git.heroku.com']
+ALLOWED_HOSTS = ['hilton-hotel-uz.herokuapp.com', '127.0.0.1', 'git.heroku.com']
 
 
 # Application definition
@@ -162,8 +162,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'hotel_manager/static'),
-    os.path.join(BASE_DIR, 'user/static')
+    os.path.join(BASE_DIR, 'user/static'),
+    os.path.join(BASE_DIR, 'hotel_manager/static')
 ]
 
 MEDIA_URL = '/media/'
