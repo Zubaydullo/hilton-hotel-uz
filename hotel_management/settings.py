@@ -200,6 +200,7 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
+            'redirect_url': 'http://hilton-hotel-uz.herokuapp.com/'
         }
     }
 }
