@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # hilton-hotel-uz
 # Live Demo : https://hilton-hotel-uz.herokuapp.com/
 # NOTE! Currently working on heroku static files rendering issue, about to fix the problem)
@@ -10,3 +11,6 @@ Some screenshots from this project:
 ![Screenshot from 2021-09-22 17-48-13](https://user-images.githubusercontent.com/73770602/134722058-e0f1b108-adcc-4b3c-902b-f9a09cd034a4.png)
 
 
+=======
+# hilton-hotel-uz
+>>>>>>> 2e09077a06b5a374375c40dc1109bd003d3a91b8
