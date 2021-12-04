@@ -1,4 +1,6 @@
 # hilton-hotel-uz
+# Live Demo : https://hilton-hotel-uz.herokuapp.com/
+# NOTE! Currently working on heroku static files rendering issue, about to fix the problem)
 Some screenshots from this project:
 ![Screenshot from 2021-09-22 17-50-52](https://user-images.githubusercontent.com/73770602/134721993-bb40ff95-8dd3-458d-858e-ae76dd2b922d.png)
 ![Screenshot from 2021-09-22 17-50-52](https://user-images.githubusercontent.com/73770602/134722040-6cceec71-5163-480d-82a7-78940bd10e9d.png)
