@@ -163,8 +163,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'hotel_manager/static')
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'  # new
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+WHITENOISE_MANIFEST_STRICT = False
 MEDIA_URL = '/media/'
 
 # Path where media is stored
