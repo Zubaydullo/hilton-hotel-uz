@@ -167,7 +167,6 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'  # new
-WHITENOISE_USE_FINDERS = True
 MEDIA_URL = '/media/'
 
 # Path where media is stored
